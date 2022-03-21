@@ -13,7 +13,9 @@ const ActivityType = ({allActivities}) => {
     return (
         <>
         <div className="activityType">
-            {activityNodes}
+            <div className="grid-row">
+                {activityNodes}
+            </div>
         </div>
         </>
     )

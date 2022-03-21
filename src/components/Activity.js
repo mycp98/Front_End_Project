@@ -1,10 +1,10 @@
-const Activity = ({activity}, {allVenues}) => {
+const Activity = ({activity}) => {
 
     return (
         <>
             <h3>{activity.name}</h3>
             <p>{activity.description}</p>
-            <p>{allVenues.getVenueById[activity.venue_id]}</p>
+            {/* <p>{allVenues.getVenueById[activity.venue_id]}</p> */}
         </>
     )
 

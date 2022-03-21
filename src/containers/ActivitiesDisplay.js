@@ -1,10 +1,10 @@
 import ActivityType from "../components/ActivityType";
 
-const ActivitiesDisplay = ({allActivities}, {allVenues}) => {
+const ActivitiesDisplay = ({allActivities}) => {
 
     return (
         <>
-        <ActivityType allActivities={allActivities} allVenues={allVenues}/>
+            <ActivityType allActivities={allActivities}/>
         </>
     )
 

@@ -1,16 +1,38 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+
 .activityType {
     display: flex;
-    /* align-items: center; */
-    flex-direction: horizontal;
-    flex-wrap: wrap;
-    flex-basis: 33.33%;
-}
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    width: 80%;
+    border: 3px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+    
+    }
 .activityNode {
-    border: 10px black;
-    margin: auto;
     display: flex;
     flex-wrap: wrap;
+    border: 3px solid black;
+    padding: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
+
 body {
-    padding: 10em;
+    background-color: rgb(245, 245, 235);
+    font-family: Roboto, Arial, Helvetica, sans-serif;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+   
 }

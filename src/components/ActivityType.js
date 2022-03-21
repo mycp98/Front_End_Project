@@ -1,5 +1,4 @@
 import Activity from "./Activity";
-import Venue from "./Venue";
 
 const ActivityType = ({allActivities}) => {
 

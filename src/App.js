@@ -7,12 +7,23 @@ import Venue from './components/Venue';
 function App() {
   
 
-  let [venues, setVenues] = useState([]);
+  const [venues, setVenues] = useState([]);
+
+  const [guides, setGuides] = useState([]);
+
+  const [activities, setActivities] = useState([]);
 
   useEffect (() => {
     fetch("http://localhost:8080/venues")
       .then(response => response.json())
       .then(data => setVenues(data))
+      .then(() => fetch("http://localhost:8080/guides"))
+      .then(response => response.json())
+      .then(data => setGuides(data))
+      .then(()=> fetch("http://localhost:8080/activities"))
+      .then(response => response.json())
+      .then(data => setActivities(data))
+
       .catch(error => console.error(error))
   }, [])
 
@@ -22,14 +33,14 @@ function App() {
   //   return <Venue venue={venue} key={venue.id}/> 
   // })
 
-  const [guides, setGuides] = useState([]);
+  
 
-  useEffect (() => {
-    fetch("http://localhost:8080/guides")
-      .then(response => response.json())
-      .then(data => setGuides(data))
-      .catch(error => console.error(error))
-  }, [])
+  // useEffect (() => {
+  //   fetch("http://localhost:8080/guides")
+  //     .then(response => response.json())
+  //     .then(data => setGuides(data))
+  //     .catch(error => console.error(error))
+  // }, [])
 
 
   const [users, setUsers] = useState([]);
@@ -42,7 +53,7 @@ function App() {
   }, [])
   
 
-  const [activities, setActivities] = useState([]);
+  
 
   // const activitiesVenuesGuides = activities.map(addExternalData)
 
@@ -54,13 +65,13 @@ function App() {
 
   // }
 
-  useEffect (() => {
-    fetch("http://localhost:8080/activities")
-      .then(response => response.json())
-      // put a then here 
-      .then(data => setActivities(data))
-      .catch(error => console.error(error))
-  }, [])
+  // useEffect (() => {
+  //   fetch("http://localhost:8080/activities")
+  //     .then(response => response.json())
+  //     // put a then here 
+  //     .then(data => setActivities(data))
+  //     .catch(error => console.error(error))
+  // }, [])
 
   console.log(activities);
   
@@ -69,7 +80,13 @@ function App() {
   //for posting requests back --
   // be careful of how this would work with adding new activities etc
 
+  const mappedActivities = activities.map (activity => {
+    activity.venue = venues.find(venue => venue.id === activity.venue_id);
+    activity.guide = guides.find(guide => guide.id === activity.guide_id);
+    return activity
+  })
 
+  
 
   return (
     <>
@@ -77,8 +94,8 @@ function App() {
     users={users}
     />
     <ActivitiesDisplay 
-    allActivities={activities} 
-    allVenues={venues}
+    allActivities={mappedActivities} 
+    // allVenues={venues}
     // allGuides={guides}
     />
     </>

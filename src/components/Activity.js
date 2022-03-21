@@ -4,7 +4,9 @@ const Activity = ({activity}) => {
         <>
             <h3>{activity.name}</h3>
             <p>{activity.description}</p>
-            {/* <p>{allVenues.getVenueById[activity.venue_id]}</p> */}
+            <p>{activity.venue.name}</p>
+            
+            
         </>
     )
 

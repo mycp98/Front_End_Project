@@ -95,6 +95,7 @@ function App() {
     />
     <ActivitiesDisplay 
     allActivities={mappedActivities} 
+    
     // allVenues={venues}
     // allGuides={guides}
     />

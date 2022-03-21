@@ -1,0 +1,16 @@
+.activityType {
+    display: flex;
+    /* align-items: center; */
+    flex-direction: horizontal;
+    flex-wrap: wrap;
+    flex-basis: 33.33%;
+}
+.activityNode {
+    border: 10px black;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+body {
+    padding: 10em;
+}

@@ -12,7 +12,9 @@ const ActivityType = ({allActivities}) => {
 
     return (
         <>
+        <div className="activityType">
             {activityNodes}
+        </div>
         </>
     )
 

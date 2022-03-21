@@ -51,8 +51,8 @@ function App() {
     />
     <ActivitiesDisplay 
     allActivities={activities} 
-    venues={venues}
-    guides={guides}
+    allVenues={venues}
+    allGuides={guides}
     />
     </>
   );

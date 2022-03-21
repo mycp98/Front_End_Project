@@ -43,6 +43,10 @@ function App() {
   }, [])
   
 
+  // replace venue_id with the corresponding venue object 
+  // be careful of how this would work with adding new activities etc
+
+
 
   return (
     <>

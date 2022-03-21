@@ -1,9 +1,13 @@
 import Activity from "./Activity";
 
-const ActivityType = ({allActivities}) => {
+const ActivityType = ({allActivities}, {allVenues}) => {
 
-    const activityNodes = allActivities.map((activity, index) => {
-        return <Activity activity={activity} key={activity.id}/> 
+    const activityNodes = allActivities.map((activity) => {
+        return <Activity activity={activity} key={activity.id} allVenues={allVenues}/> 
+    })
+
+    const venueNodes = allVenues.map((venue) =>  {
+
     })
 
     return (

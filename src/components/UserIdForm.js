@@ -7,35 +7,57 @@ const UserIdForm = ({users}) => {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
+  const [currentUser, setCurrentUser] = useState({});
+
+
   const errors = {
-    uname: "invalid email",
-    pass: "invalid phone number"
+    emailAd: "Invalid Email",
+    phoneNo: "Invalid Phone Number"
   };
 
   const handleSubmit = (event) => {
     //Prevent page reload
     event.preventDefault();
 
-    let { uname, pass } = document.forms[0];
+    let { emailAd, phoneNo } = document.forms[0];
 
     // Find user login info
-    const userData = users.find((user) => user.email === uname.value);
-
+    const userData = users.find((user) => user.email === emailAd.value);
+    
     // Compare user info
     if (userData) {
-      if (userData.phoneNumber !== pass.value) {
+      if (userData.phoneNumber !== phoneNo.value) {
         // Invalid password
-        setErrorMessages({ name: "pass", message: errors.pass });
-      } else {
-        setIsSubmitted(true);
+        setErrorMessages({ 
+            name: "phoneNo", 
+            message: errors.phoneNo });
       }
-    } else {
-      // Username not found
-      setErrorMessages({ name: "uname", message: errors.uname });
+      
+      else {
+        setIsSubmitted(true);
+        setCurrentUser({ 
+            id: userData.id, 
+            name: userData.name
+         });
+         console.log(userData.name);
+         console.log(currentUser.name);
+    
+      }
+      
+    } 
+
+    else {
+      // email not found
+      setErrorMessages({ 
+          name: "emailAd", 
+          message: errors.emailAd });
     }
   };
 
+
+
   // Generate JSX code for error message
+  // !
   const renderErrorMessage = (name) =>
     name === errorMessages.name && (
       <div className="error">{errorMessages.message}</div>
@@ -47,13 +69,13 @@ const UserIdForm = ({users}) => {
       <form onSubmit={handleSubmit}>
         <div className="input-container">
           <label>Email </label>
-          <input type="text" name="uname" required />
-          {renderErrorMessage("uname")}
+          <input type="text" name="emailAd" required />
+          {renderErrorMessage("emailAd")}
         </div>
         <div className="input-container">
           <label>Phone Number </label>
-          <input type="password" name="pass" required />
-          {renderErrorMessage("pass")}
+          <input type="password" name="phoneNo" required />
+          {renderErrorMessage("phoneNo")}
         </div>
         <div className="button-container">
           <input type="submit" />

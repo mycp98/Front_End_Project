@@ -86,19 +86,113 @@ function App() {
     return activity
   })
 
+    // React States
+  const [errorMessages, setErrorMessages] = useState({});
+  const [isSubmitted, setIsSubmitted] = useState(false);
+
+    // to do: ask why it only worked in this way (i.e: why we had to set properties here and not in 'errorMessages')
+  const [currentUser, setCurrentUser] = useState({id: "", name: "", phoneNumber: "", email: ""});
+  
+  const [userActivities, setUserActivities] = useState([]);
+
+ 
+    useEffect (() => {
+      fetch(`http://localhost:8080/users/${currentUser.id}/activities`)
+        .then(response => response.json())
+        // .then(response => JSON.stringify(response))
+        .then(data => setUserActivities(data))
+        .catch(error => console.error(error))
+    }, [currentUser])
+
+  const errors = {
+    emailAd: "Invalid Email",
+    phoneNo: "Invalid Phone Number"
+  };
+
+  const handleSubmit = (event) => {
+    //Prevent page reload
+    event.preventDefault();
+
+    let { emailAd, phoneNo } = document.forms[0];
+
+    // Find user login info
+    const userData = users.find((user) => user.email === emailAd.value);
+    
+    // Compare user info
+    if (userData) {
+      if (userData.phoneNumber !== phoneNo.value) {
+        // Invalid password
+        setErrorMessages({ 
+            name: "phoneNo", 
+            message: errors.phoneNo });
+      }
+      
+      else {
+        setIsSubmitted(true);
+        console.log(currentUser);
+        console.log(userData);
+        const newUser = {id: userData.id, name: userData.name, phoneNumber: userData.phoneNumber, email: userData.email}
+        setCurrentUser(newUser);
+        
+    
+      }
+      
+    } 
+
+    else {
+      // email not found
+      setErrorMessages({ 
+          name: "emailAd", 
+          message: errors.emailAd });
+    }
+  };
+
+
+
+  // Generate JSX code for error message
+  // !
+  const renderErrorMessage = (name) =>
+    name === errorMessages.name && (
+      <div className="error">{errorMessages.message}</div>
+    );
+
+  // JSX code for login form
+  const renderForm = (
+    <div className="form">
+      <form onSubmit={handleSubmit}>
+        <div className="input-container">
+          <label>Email </label>
+          <input type="text" name="emailAd" required />
+          {renderErrorMessage("emailAd")}
+        </div>
+        <div className="input-container">
+          <label>Phone Number </label>
+          <input type="password" name="phoneNo" required />
+          {renderErrorMessage("phoneNo")}
+        </div>
+        <div className="button-container">
+          <input type="submit" />
+        </div>
+      </form>
+    </div>
+    );
   
 
   return (
     <>
-    <UserIdForm
-    users={users}
-    />
+     <div className="app">
+            <div className="login-form">
+            <div className="title">Sign In</div>
+          {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
+        </div>
+    </div>
     <ActivitiesDisplay 
     allActivities={mappedActivities} 
     
     // allVenues={venues}
     // allGuides={guides}
     />
+  
     </>
   );
 }

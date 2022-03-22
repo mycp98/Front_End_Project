@@ -7,8 +7,8 @@ const UserIdForm = ({users}) => {
   const [errorMessages, setErrorMessages] = useState({});
   const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const [currentUser, setCurrentUser] = useState({});
-
+    // to do: ask why it only worked in this way (i.e: why we had to set properties here and not in 'errorMessages')
+  const [currentUser, setCurrentUser] = useState({id: "", name: "", phoneNumber: "", email: ""});
 
   const errors = {
     emailAd: "Invalid Email",
@@ -35,12 +35,14 @@ const UserIdForm = ({users}) => {
       
       else {
         setIsSubmitted(true);
-        setCurrentUser({ 
-            id: userData.id, 
-            name: userData.name
-         });
-         console.log(userData.name);
-         console.log(currentUser.name);
+        setCurrentUser(
+            currentUser.id = userData.id,
+            currentUser.name = userData.name,
+            currentUser.phoneNumber = userData.phoneNumber,
+            currentUser.email = userData.email
+         );
+         
+    
     
       }
       

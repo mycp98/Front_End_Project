@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import Nav from './components/Nav';
+import SearchPage from './components/SearchPage';
+
 
 
 function App() {
@@ -68,7 +70,6 @@ function App() {
         activity.guide = guides.find(guide => guide.id === activity.guide_id);
         return activity
       })
-      console.log(mappedUserActivities);
     }, [userActivities])
 
   const errors = {
@@ -154,10 +155,10 @@ function App() {
           {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
         </div>
     </div>
-    <ActivitiesDisplay 
-    allActivities={mappedActivities} 
     
-    />
+    <SearchPage  allActivities={mappedActivities}/>
+   
+    <ActivitiesDisplay allActivities={mappedActivities} />
   
     </>
   );

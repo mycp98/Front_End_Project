@@ -86,6 +86,10 @@ body {
 background-color:#4095c6;
 }
 
+.hide{
+  visibility: hidden;
+}
+
 
 /* CSS for sign in form */
 input[type="text"],

@@ -14,8 +14,9 @@ const SearchPage = ({allActivities}) => {
 
   
   useEffect (() => {
+      //!
       console.log(activityList);
-        },[activityList])
+  },[activityList])
 
 //   const fetchData = async () => {
 //     return await fetch("http://localhost:8080/activities")
@@ -44,7 +45,10 @@ const updateInput = async (input) => {
        input={input} 
        onChange={updateInput}
       />
+      <div className= "hide">
       <ActivityList activityList={activityList}/>
+    
+      </div>
     </>
    );
 }

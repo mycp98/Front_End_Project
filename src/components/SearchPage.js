@@ -8,10 +8,18 @@ const SearchPage = ({allActivities}) => {
   const [activityList, setActivityList] = useState([]);
 
   useEffect (() => {
-    setActivityListDefault (allActivities)
     setActivityList (allActivities)
   },[])
 
+  useEffect (() => {
+    setActivityListDefault (allActivities)
+    // setActivityList (allActivities)
+    console.log(allActivities);
+  },[activityList])
+
+  
+
+  
   
   useEffect (() => {
       //!
@@ -27,12 +35,22 @@ const SearchPage = ({allActivities}) => {
 //        })}
 
 
-const updateInput = async (input) => {
-    const filtered = activityListDefault.filter(activity => {
-     return activity.name.toLowerCase().includes(input.toLowerCase())
-    })
-    setInput(input);
-    setActivityList(filtered);
+    const updateInput = async (searchInput) => {
+
+        setInput(searchInput);
+        console.log(searchInput);
+        console.log(activityListDefault);
+        if (searchInput != "") {
+            const filtered = activityListDefault.filter(activity => {
+                return activity.name.toLowerCase().includes(searchInput.toLowerCase())
+            })
+            console.log(filtered);
+            setActivityList(filtered);
+        }
+        else if (searchInput == ""){
+            setActivityList([])
+        }
+    
  }
 
 

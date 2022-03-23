@@ -6,8 +6,13 @@ const ActivityList = ({activityList}) => {
         {activityList.map((activity) => {
             if (activity) {
                 return (
-                <div key={activity.id}>
-                    <h1>{activity.name}</h1>
+                <div className="searchActivityNode" key={activity.id}>
+                    <h3>{activity.name}</h3>
+                    <h4>Description:</h4>
+                    <p>{activity.description}</p>
+                    <h4>Venue: </h4>
+            <p>{activity.venue.name}</p>
+            <button className="btn" id="book-activity-btn">Book Activity</button>
             </div>
                 )
             }

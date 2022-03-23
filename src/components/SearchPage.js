@@ -7,45 +7,35 @@ const SearchPage = ({allActivities}) => {
   const [activityListDefault, setActivityListDefault] = useState([]);
   const [activityList, setActivityList] = useState([]);
 
-  useEffect (() => {
-    setActivityList (allActivities)
-  },[])
+
 
   useEffect (() => {
     setActivityListDefault (allActivities)
-    // setActivityList (allActivities)
-    console.log(allActivities);
   },[activityList])
 
-  
+  useEffect (() => {
+    setActivityList (allActivities)
+    console.log("activity list initial useEffect");
+  },[])
 
-  
   
   useEffect (() => {
-      //!
-      console.log(activityList);
+      console.log("activity list updated");
   },[activityList])
 
-//   const fetchData = async () => {
-//     return await fetch("http://localhost:8080/activities")
-//       .then(response => response.json())
-//       .then(data => {
-//         setActivityList(data) 
-//         setActivityListDefault(data)
-//        })}
 
 
     const updateInput = async (searchInput) => {
-
         setInput(searchInput);
-        console.log(searchInput);
-        console.log(activityListDefault);
         if (searchInput != "") {
+            console.log("inside first if statement")
             const filtered = activityListDefault.filter(activity => {
                 return activity.name.toLowerCase().includes(searchInput.toLowerCase())
             })
+            console.log("filtered array:");
             console.log(filtered);
             setActivityList(filtered);
+            
         }
         else if (searchInput == ""){
             setActivityList([])
@@ -58,14 +48,15 @@ const SearchPage = ({allActivities}) => {
 
   return (
     <>
-      <h1>Activity list</h1>
+      <h2>Search Activities</h2>
       <SearchBar 
        input={input} 
        onChange={updateInput}
       />
-      <div className= "hide">
-      <ActivityList activityList={activityList}/>
-    
+      <div className= "searchActivityType">
+        <div className="searchGrid-row">
+            <ActivityList activityList={activityList}/>
+        </div>
       </div>
     </>
    );

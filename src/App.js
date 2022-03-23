@@ -3,6 +3,8 @@ import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import UserIdForm from './components/UserIdForm'
 import Venue from './components/Venue';
+import Nav from './components/Nav';
+
 
 function App() {
   
@@ -180,6 +182,7 @@ function App() {
 
   return (
     <>
+    <Nav/>
      <div className="app">
             <div className="login-form">
             <div className="title">Sign In</div>

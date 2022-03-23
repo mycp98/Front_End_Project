@@ -90,7 +90,7 @@ background-color:#4095c6;
 /* CSS for sign in form */
 input[type="text"],
 input[type="password"] {
-  height: 25px;
+  height: 25px; 
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
@@ -141,4 +141,7 @@ input[type="submit"]:hover {
   margin: 10px;
 }
 
-
+.nav-bar {
+  display: flex;
+  
+} 

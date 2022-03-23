@@ -3,6 +3,7 @@ import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import Nav from './components/Nav';
 import SearchPage from './components/SearchPage';
+import Footer from './components/Footer';
 
 
 
@@ -152,7 +153,7 @@ function App() {
 
     
      <div className="app">
-            <div className="login-form">
+            <div className="login-form" >
             <div className="title">Sign In</div>
           {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
         </div>
@@ -161,7 +162,7 @@ function App() {
     <SearchPage  allActivities={mappedActivities}/>
    
     <ActivitiesDisplay allActivities={mappedActivities} />
-  
+    <Footer />
     </>
   );
 }

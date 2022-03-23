@@ -41,7 +41,7 @@ const updateInput = async (input) => {
   return (
     <>
       <h1>Activity list</h1>
-      <SearchBar 
+      <SearchBar
        input={input} 
        onChange={updateInput}
       />

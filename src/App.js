@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import Nav from './components/Nav';
 import SearchPage from './components/SearchPage';
+
 
 
 
@@ -71,6 +72,7 @@ function App() {
 // console.log(mappedUserActivities);
 
   useEffect (() => {
+    console.log(currentUser);
     if(currentUser.id != "") {
     fetch(`http://localhost:8080/users/${currentUser.id}/activities`)
       .then(response => response.json())
@@ -79,8 +81,8 @@ function App() {
     }
   }, [currentUser])
 
-
-  let mappedUserActivities = [{
+// have a current property that stores the current value
+  const mappedUserActivities = useRef([{
       id: 2,
       guide_id: 1,
       venue_id: 4,
@@ -92,14 +94,15 @@ function App() {
       price: 7.5,
       capacity: 20,
       cancelled: false
-    }]
+    }])
 
     useEffect (() => {
-      let mappedUserActivities = userActivities.map (activity => {
+      if(currentUser.id != "") {
+       mappedUserActivities.current = userActivities.map (activity => {
         activity.venue = venues.find(venue => venue.id === activity.venue_id);
         activity.guide = guides.find(guide => guide.id === activity.guide_id);
         return activity
-      })}
+      })}}
     , [userActivities])
 
   const errors = {
@@ -188,9 +191,9 @@ function App() {
     
     <SearchPage  allActivities={mappedActivities}/>
    
-    mappedUserActivities ? <ActivitiesDisplay userActivities={mappedUserActivities} /> : <p>Please sign in </p>
+    <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} />
     
-    <ActivitiesDisplay allActivities={mappedActivities} />
+    {/* <ActivitiesDisplay allActivities={mappedActivities} /> */}
   
     </>
   );

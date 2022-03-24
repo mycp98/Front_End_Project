@@ -7,11 +7,14 @@
 
 .activityType {
     grid-template-columns: auto auto auto;
+    overflow: scroll;
+    height: 600px;
     justify-content: center;
     max-width: 90%;
     border: 3px solid black;
     margin-left: auto;
     margin-right: auto;
+    
     }
 
 .grid-row {

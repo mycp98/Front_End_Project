@@ -1,6 +1,7 @@
 const ActivityList = ({activityList}) => {
     
     
+    
         return (
         <>
         {activityList.map((activity) => {

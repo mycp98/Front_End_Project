@@ -1,9 +1,9 @@
 import Activity from "./Activity";
 
-const UserBookedActivities = ({userActivities}) => {
+const UserBookedActivities = ({userActivities, currentUser}) => {
 
     const userActivityNodes = userActivities.map((activity) => {
-        return <Activity activity={activity} key={activity.id}/> 
+        return <Activity activity={activity} key={activity.id} currentUser={currentUser}/> 
     })
 
 

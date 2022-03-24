@@ -177,6 +177,7 @@ function App() {
       </form>
     </div>
     );
+
   
 
   return (
@@ -191,7 +192,7 @@ function App() {
     
     <SearchPage  allActivities={mappedActivities}/>
    
-    <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} />
+    <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} currentUser={currentUser} />
     
     {/* <ActivitiesDisplay allActivities={mappedActivities} /> */}
   

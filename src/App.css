@@ -80,6 +80,7 @@
     -ms-flex: auto;
     width: 259px;
     position: relative;
+    max-width: 28%;
     box-sizing: border-box;
 }
 @media(max-width: 1073px) {
@@ -134,9 +135,6 @@ body {
 background-color:#4095c6;
 }
 
-/* .hide{
-  visibility: hidden;
-} */
 
 
 /* CSS for sign in form */

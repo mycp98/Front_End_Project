@@ -3,7 +3,6 @@ import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import Nav from './components/Nav';
 import SearchPage from './components/SearchPage';
-import Footer from './components/Footer';
 
 
 
@@ -38,7 +37,7 @@ function App() {
       .then(data => setUsers(data))
       .catch(error => console.error(error))
   }, [])
-  
+
 
   const mappedActivities = activities.map (activity => {
     activity.venue = venues.find(venue => venue.id === activity.venue_id);
@@ -55,7 +54,22 @@ function App() {
   
   const [userActivities, setUserActivities] = useState([]);
 
- 
+//  const [mappedUserActivities, setMappedUserActivities] = useState([{
+//   id: 2,
+//   guide_id: 1,
+//   venue_id: 4,
+//   name: "Jack the Ripper, Interactive Guided Walking Tour",
+//   description: "Hit the streets of East End London on an interactive Jack the Ripper walking tour. Head back to 1888 with your expert Ripperologist guide as you try to solve the still unsolved murders on this immersive small-group experience.",
+//   date: "2022-05-13",
+//   time: "20:00:00",
+//   duration: "1-2hrs",
+//   price: 7.5,
+//   capacity: 20,
+//   cancelled: false
+// }])
+
+// console.log(mappedUserActivities);
+
   useEffect (() => {
     if(currentUser.id != "") {
     fetch(`http://localhost:8080/users/${currentUser.id}/activities`)
@@ -65,13 +79,28 @@ function App() {
     }
   }, [currentUser])
 
+
+  let mappedUserActivities = [{
+      id: 2,
+      guide_id: 1,
+      venue_id: 4,
+      name: "Jack the Ripper, Interactive Guided Walking Tour",
+      description: "Hit the streets of East End London on an interactive Jack the Ripper walking tour. Head back to 1888 with your expert Ripperologist guide as you try to solve the still unsolved murders on this immersive small-group experience.",
+      date: "2022-05-13",
+      time: "20:00:00",
+      duration: "1-2hrs",
+      price: 7.5,
+      capacity: 20,
+      cancelled: false
+    }]
+
     useEffect (() => {
-      const mappedUserActivities = userActivities.map (activity => {
+      let mappedUserActivities = userActivities.map (activity => {
         activity.venue = venues.find(venue => venue.id === activity.venue_id);
         activity.guide = guides.find(guide => guide.id === activity.guide_id);
         return activity
-      })
-    }, [userActivities])
+      })}
+    , [userActivities])
 
   const errors = {
     emailAd: "Invalid Email",
@@ -150,10 +179,8 @@ function App() {
   return (
     <>
     <Nav/>
-
-    
      <div className="app">
-            <div className="login-form" >
+            <div className="login-form">
             <div className="title">Sign In</div>
           {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
         </div>
@@ -161,8 +188,10 @@ function App() {
     
     <SearchPage  allActivities={mappedActivities}/>
    
+    mappedUserActivities ? <ActivitiesDisplay userActivities={mappedUserActivities} /> : <p>Please sign in </p>
+    
     <ActivitiesDisplay allActivities={mappedActivities} />
-    <Footer />
+  
     </>
   );
 }

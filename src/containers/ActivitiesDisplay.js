@@ -2,7 +2,7 @@ import ActivityType from "../components/ActivityType";
 import UserBookedActivities from "../components/UserBookedActivities";
 
 //props always sent as one big object - insert as much as you need into the object
-const ActivitiesDisplay = ({allActivities, userActivities, currentUser}) => {
+const ActivitiesDisplay = ({allActivities, userActivities, currentUser, setUserActivities}) => {
 
 // console.log(allActivities);
 
@@ -22,7 +22,7 @@ console.log(currentUser);
            
 
             <h2 className="activity-type-title">All Activities</h2>
-            <ActivityType allActivities={allActivities} currentUser={currentUser}/>
+            <ActivityType allActivities={allActivities} currentUser={currentUser} userActivities={userActivities} setUserActivities={setUserActivities}/>
         </>
     )
 

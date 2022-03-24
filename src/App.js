@@ -192,7 +192,7 @@ function App() {
     
     <SearchPage  allActivities={mappedActivities}/>
    
-    <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} currentUser={currentUser} />
+    <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} currentUser={currentUser} setUserActivities={setUserActivities}/>
     
     {/* <ActivitiesDisplay allActivities={mappedActivities} /> */}
   

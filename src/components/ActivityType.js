@@ -1,10 +1,10 @@
 import Activity from "./Activity";
 
-const ActivityType = ({allActivities, currentUser}) => {
+const ActivityType = ({allActivities, currentUser, userActivities, setUserActivities}) => {
 
     const activityNodes = allActivities.map((activity) => {
         console.log(activity);
-        return <Activity activity={activity} currentUser={currentUser} key={activity.id}/> 
+        return <Activity activity={activity} currentUser={currentUser} key={activity.id} userActivities={userActivities} setUserActivities={setUserActivities}/> 
     })
 
     // const venueNodes = allVenues.map((venue) => {

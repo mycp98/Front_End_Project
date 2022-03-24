@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 
-const Activity = ({activity, currentUser}) => {
+const Activity = ({activity, currentUser, userActivities, setUserActivities}) => {
 
-    console.log(activity);
+    // console.log(activity);
+    console.log(userActivities);
 
     useEffect(() =>  {
     console.log(currentUser);
@@ -10,15 +11,17 @@ const Activity = ({activity, currentUser}) => {
 
     const handleBookButtonClick = (event) => {
         event.preventDefault();
-        console.log("it clicked");
+        console.log("book clicked");
         fetch(`http://localhost:8080/users/${currentUser.id}/activities/${activity.id}`, {
           method:"POST"})
-        //   headers: {
-        //       'Content-Type': 'application/json'
-        //   },
         }
-    
 
+    const handleCancelButtonClick = (event) => {
+        event.preventDefault();
+        console.log("cancel clicked");
+        fetch(`http://localhost:8080/users/${currentUser.id}/activities/${activity.id}`, {
+          method:"DELETE"})
+        }
 
 
  //where should this live? 
@@ -38,7 +41,14 @@ const Activity = ({activity, currentUser}) => {
 //   }
 // },[])
 
-
+// useEffect(() => {
+//     for (let index = 0; index < userActivities.length; index++) {
+//         if(userActivities[index].id == activity.id){
+//             console.log("user is booked into this activity");
+//         }
+    
+//     }
+// }, [currentUser])
 
     return (
         <>
@@ -49,12 +59,11 @@ const Activity = ({activity, currentUser}) => {
             {/* <h4>Venue: </h4> */}
             {/* <p>{activity.venue.name}</p> */}
             <button onClick={handleBookButtonClick} className="btn" id="book-activity-btn">Book Activity</button>
-            {/* {userActivities.length > 0 ?  
-            <div>
-                <h2 className="activity-type-title">Your Booked Activities</h2>
-            <UserBookedActivities userActivities={userActivities} currentUser={currentUser}/> 
-            </div> : 
+            {/* {userActivities.name == activity.name ?  
+            <button onClick={handleBookButtonClick} className="btn" id="book-activity-btn">Book Activity</button>
+            : 
             <p>Sign in</p> } */}
+            <button onClick={handleCancelButtonClick} className="btn" id="cancel-activity-btn">Cancel Activity</button>
         </div>
         </>
     )

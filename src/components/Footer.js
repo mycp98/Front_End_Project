@@ -1,11 +1,14 @@
 const Footer = () => {
 
     return (
-        <>
-     <div className="footer">
-        <p>Footer Content</p>
-    </div>
-        </>
+        <div className="footer">
+            <div >
+                <p>&#x24B8; 2022</p>
+            </div>
+            <div className="names">Marcy, Aoife, Abdi, Cristian, Michelle
+
+            </div>
+        </div>
     )
 
 }

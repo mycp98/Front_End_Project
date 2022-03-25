@@ -13,13 +13,17 @@
     overflow: scroll;
     height: 600px;
     grid-template-columns: auto auto auto;
+    overflow: scroll;
+    height: 600px;
     justify-content: center;
     max-width: 90%;
     border: 3px solid rgb(151, 134, 134);
     margin-left: auto;
     margin-right: auto;
+
     margin-bottom: 50px;
     padding: 10px;
+
     }
 
 .activity-type-title {

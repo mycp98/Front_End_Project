@@ -3,6 +3,11 @@ import './App.css';
 import ActivitiesDisplay from './containers/ActivitiesDisplay';
 import Nav from './components/Nav';
 import SearchPage from './components/SearchPage';
+import Footer from './components/Footer';
+import london1 from './images/london1.jpeg';
+import london2 from './images/london2.png'
+
+
 
 
 
@@ -182,19 +187,28 @@ function App() {
   return (
     <>
     <Nav/>
-     <div className="app">
-            <div className="login-form">
-            <div className="title">Sign In</div>
+      <div className="app">
+
+        <div className="login-form">
+          <div className="title">Sign In</div>
           {isSubmitted ? <div>User is successfully logged in</div> : renderForm}
         </div>
-    </div>
+
+        <div className='londonImage'>
+          {/* <img src={london2} alt="London" height="287px" width="720" /> */}
+        </div>
+      </div>
+
+    
+
     
     <SearchPage  allActivities={mappedActivities}/>
    
     <ActivitiesDisplay userActivities={userActivities} allActivities={mappedActivities} />
     
     {/* <ActivitiesDisplay allActivities={mappedActivities} /> */}
-  
+     
+    <Footer/>
     </>
   );
 }

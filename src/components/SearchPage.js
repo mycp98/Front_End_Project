@@ -6,6 +6,7 @@ const SearchPage = ({allActivities}) => {
   const [input, setInput] = useState('');
   const [activityListDefault, setActivityListDefault] = useState([]);
   const [activityList, setActivityList] = useState([]);
+  const [isSearchEmpty, setIsSearchEmpty] = useState(true);
 
 
 
@@ -35,10 +36,12 @@ const SearchPage = ({allActivities}) => {
             console.log("filtered array:");
             console.log(filtered);
             setActivityList(filtered);
+            setIsSearchEmpty(false);
             
         }
         else if (searchInput == ""){
             setActivityList([])
+            setIsSearchEmpty(true)
         }
     
  }
@@ -50,6 +53,7 @@ const SearchPage = ({allActivities}) => {
     <>
 
       <h2>Search Activities</h2>
+      <br></br>
       <SearchBar 
 
        input={input} 
@@ -57,7 +61,7 @@ const SearchPage = ({allActivities}) => {
       />
       <div className= "searchActivityType">
         <div className="searchGrid-row">
-            <ActivityList activityList={activityList}/>
+            {isSearchEmpty?<p className= "emptySearchText">Search Field is Empty</p>:<ActivityList activityList={activityList}/>}
         </div>
       </div>
     </>

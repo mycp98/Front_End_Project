@@ -11,7 +11,8 @@ const SearchBar = ({input:keyword, onChange:setKeyword}) => {
        placeholder={"search activity"}
        onChange={(e) => setKeyword(e.target.value)}
         />
-        <h2>Search Results</h2>
+        
+        <h2><br></br>Search Results</h2>
       </div>
     );
   }

@@ -16,7 +16,7 @@ console.log(userActivities);
                 <h2 className="activity-type-title">Your Booked Activities</h2>
             <UserBookedActivities userActivities={userActivities}/> 
             </div> : 
-            <p>Sign in</p> }
+            <p>Please Sign In At the Top</p> }
            
 
             <h2 className="activity-type-title">All Activities</h2>

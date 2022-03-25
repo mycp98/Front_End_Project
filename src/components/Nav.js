@@ -25,9 +25,12 @@ return (
     <nav>
         {(toggleMenu || screenWidth > 500)&& (
         <ul className="list">
+
+          <li className="JavaChapTitle">Java <br></br> Chaperones</li>
           <li className="items"><a href="index.html">Home</a></li>
           <li className="items"><a href="index.html">Guides</a></li>
           <li className="items"><a href="index.html">Venues</a></li>
+          
         
         </ul>
         )}
